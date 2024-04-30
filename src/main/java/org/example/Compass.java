@@ -14,21 +14,22 @@ public class Compass {
     public static Point rotate(Point point, Direction direction) {
         int movement;
         int index;
+        Point[] points = Point.values();
 
         if (direction == Direction.RIGHT) {
-            movement = 1;
+            index = (point.ordinal() + 1) % points.length;
         }else {
-            movement = -1;
+            index = (point.ordinal() - 1 + points.length) % points.length;
         }
 
-        Point[] points = Point.values();
-        // NORTH, EAST, SOUTH, WEST
 
-        // forward
-        index = (point.ordinal() + movement) % points.length;
-
-        // move backward
-        index = (point.ordinal() - movement + points.length) % points.length;
+//        // NORTH, EAST, SOUTH, WEST
+//
+//        // forward
+//        index = (point.ordinal() + movement) % points.length;
+//
+//        // move backward
+//        index = (point.ordinal() - movement + points.length) % points.length;
 
 
         return points[index];
